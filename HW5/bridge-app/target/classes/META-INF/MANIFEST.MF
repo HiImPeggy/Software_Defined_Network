@@ -1,0 +1,32 @@
+Manifest-Version: 1.0
+Bnd-LastModified: 1763460789600
+Build-Jdk: 11.0.28
+Built-By: peggy
+Bundle-Description: ONOS OSGi bundle archetype
+Bundle-License: http://www.apache.org/licenses/LICENSE-2.0.txt
+Bundle-ManifestVersion: 2
+Bundle-Name: bridge-app
+Bundle-SymbolicName: nycu.winlab.bridge-app
+Bundle-Version: 1.0.0.SNAPSHOT
+Created-By: Apache Maven Bundle Plugin
+Export-Package: nycu.winlab.bridge;version="1.0.0",nycu.winlab.bridgeapp
+ ;uses:="org.onosproject.cfg,org.onosproject.core,org.onosproject.net.fl
+ ow,org.onosproject.net.flowobjective,org.onosproject.net.packet";versio
+ n="1.0.0"
+Import-Package: org.onlab.packet;version="[2.7,3)",org.onosproject.cfg;v
+ ersion="[2.7,3)",org.onosproject.core;version="[2.7,3)",org.onosproject
+ .net;version="[2.7,3)",org.onosproject.net.flow;version="[2.7,3)",org.o
+ nosproject.net.flowobjective;version="[2.7,3)",org.onosproject.net.pack
+ et;version="[2.7,3)",org.slf4j;version="[1.7,2)"
+Require-Capability: osgi.service;filter:="(objectClass=org.onosproject.c
+ fg.ComponentConfigService)";effective:=active,osgi.service;filter:="(ob
+ jectClass=org.onosproject.core.CoreService)";effective:=active,osgi.ser
+ vice;filter:="(objectClass=org.onosproject.net.flow.FlowRuleService)";e
+ ffective:=active,osgi.service;filter:="(objectClass=org.onosproject.net
+ .flowobjective.FlowObjectiveService)";effective:=active,osgi.service;fi
+ lter:="(objectClass=org.onosproject.net.packet.PacketService)";effectiv
+ e:=active,osgi.extender;filter:="(&(osgi.extender=osgi.component)(versi
+ on>=1.4.0)(!(version>=2.0.0)))",osgi.ee;filter:="(&(osgi.ee=JavaSE)(ver
+ sion=11))"
+Service-Component: OSGI-INF/nycu.winlab.bridgeapp.BridgeApp.xml
+Tool: Bnd-4.1.0.201810181252

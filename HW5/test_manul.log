@@ -1,0 +1,96 @@
+*** Creating network
+*** Adding controller
+*** Adding hosts:
+h1 h2 h3 h4 h5 
+*** Adding switches:
+s1 s2 s3 
+*** Adding links:
+(s1, h1) (s1, h2) (s2, h3) (s3, h4) (s3, h5) 
+*** Configuring hosts
+h1 h2 h3 h4 h5 
+*** Starting network
+*** Starting controller
+c0 
+*** Starting 3 switches
+s1 s2 s3 ...
+[+] Assigning IPv6 addresses
+[+] Waiting for controller to learn topology
+[1] Initial connectivity test
+[+] h1 → 2001:db8::4
+PING 2001:db8::4(2001:db8::4) 56 data bytes
+
+--- 2001:db8::4 ping statistics ---
+3 packets transmitted, 0 received, 100% packet loss, time 2043ms
+
+[+] h1 → 2001:db8::5
+PING 2001:db8::5(2001:db8::5) 56 data bytes
+
+--- 2001:db8::5 ping statistics ---
+3 packets transmitted, 0 received, 100% packet loss, time 2081ms
+
+[+] h2 → 2001:db8::4
+PING 2001:db8::4(2001:db8::4) 56 data bytes
+
+--- 2001:db8::4 ping statistics ---
+3 packets transmitted, 0 received, 100% packet loss, time 2062ms
+
+[+] h2 → 2001:db8::5
+PING 2001:db8::5(2001:db8::5) 56 data bytes
+
+--- 2001:db8::5 ping statistics ---
+3 packets transmitted, 0 received, 100% packet loss, time 2064ms
+
+*** Checking NDP tables
+########################################################## h1 ##########################################################
+2001:db8::4 dev h1-eth0 lladdr ea:e9:78:fb:fd:04 REACHABLE
+2001:db8::5 dev h1-eth0 lladdr ea:e9:78:fb:fd:05 REACHABLE
+######################################################### end ##########################################################
+
+########################################################## h2 ##########################################################
+2001:db8::4 dev h2-eth0 lladdr ea:e9:78:fb:fd:04 REACHABLE
+2001:db8::5 dev h2-eth0 lladdr ea:e9:78:fb:fd:05 REACHABLE
+######################################################### end ##########################################################
+
+✅ hosts got correct Neighbor Advertisement response
+[2] Testing Proxy NDP (flush neighbor cache)
+[+] Starting tcpdump on destination hosts (h4, h5)
+[+] Re-running pings (to trigger Proxy NDP)
+[proxy test] h1 → 2001:db8::4
+PING 2001:db8::4(2001:db8::4) 56 data bytes
+
+--- 2001:db8::4 ping statistics ---
+2 packets transmitted, 0 received, 100% packet loss, time 1017ms
+
+[proxy test] h1 → 2001:db8::5
+PING 2001:db8::5(2001:db8::5) 56 data bytes
+
+--- 2001:db8::5 ping statistics ---
+2 packets transmitted, 0 received, 100% packet loss, time 1060ms
+
+[proxy test] h2 → 2001:db8::4
+PING 2001:db8::4(2001:db8::4) 56 data bytes
+
+--- 2001:db8::4 ping statistics ---
+2 packets transmitted, 0 received, 100% packet loss, time 1063ms
+
+[proxy test] h2 → 2001:db8::5
+PING 2001:db8::5(2001:db8::5) 56 data bytes
+
+--- 2001:db8::5 ping statistics ---
+2 packets transmitted, 0 received, 100% packet loss, time 1002ms
+
+[+] Stopping tcpdump captures
+✅  No NDP packets captured on h4
+✅  No NDP packets captured on h5
+*** Stopping 1 controllers
+c0 
+*** Stopping 5 links
+.....
+*** Stopping 3 switches
+s1 s2 s3 
+*** Stopping 5 hosts
+h1 h2 h3 h4 h5 
+*** Done
+
+=== Proxy NDP Test Summary ===
+✅ Proxy NDP working: no NDP packets reached destinations.

@@ -1,0 +1,32 @@
+Manifest-Version: 1.0
+Bnd-LastModified: 1762951485564
+Build-Jdk: 11.0.28
+Built-By: peggy
+Bundle-Description: ONOS OSGi bundle archetype
+Bundle-License: http://www.apache.org/licenses/LICENSE-2.0.txt
+Bundle-ManifestVersion: 2
+Bundle-Name: no-packet-in
+Bundle-SymbolicName: nycu.winlab.no-packet-in
+Bundle-Version: 1.0.0.SNAPSHOT
+Created-By: Apache Maven Bundle Plugin
+Export-Package: nycu.winlab.unicastdhcp;uses:="org.onosproject.core,org.
+ onosproject.net.config,org.onosproject.net.host,org.onosproject.net.int
+ ent,org.onosproject.net.packet";version="1.0.0"
+Import-Package: org.onlab.packet;version="[2.7,3)",org.onosproject.core;
+ version="[2.7,3)",org.onosproject.event;version="[2.7,3)",org.onosproje
+ ct.net;version="[2.7,3)",org.onosproject.net.config;version="[2.7,3)",o
+ rg.onosproject.net.config.basics;version="[2.7,3)",org.onosproject.net.
+ flow;version="[2.7,3)",org.onosproject.net.host;version="[2.7,3)",org.o
+ nosproject.net.intent;version="[2.7,3)",org.onosproject.net.packet;vers
+ ion="[2.7,3)",org.slf4j;version="[1.7,2)"
+Require-Capability: osgi.service;filter:="(objectClass=org.onosproject.c
+ ore.CoreService)";effective:=active,osgi.service;filter:="(objectClass=
+ org.onosproject.net.config.NetworkConfigRegistry)";effective:=active,os
+ gi.service;filter:="(objectClass=org.onosproject.net.host.HostService)"
+ ;effective:=active,osgi.service;filter:="(objectClass=org.onosproject.n
+ et.intent.IntentService)";effective:=active,osgi.service;filter:="(obje
+ ctClass=org.onosproject.net.packet.PacketService)";effective:=active,os
+ gi.extender;filter:="(&(osgi.extender=osgi.component)(version>=1.4.0)(!
+ (version>=2.0.0)))",osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=11))"
+Service-Component: OSGI-INF/nycu.winlab.unicastdhcp.AppComponent.xml
+Tool: Bnd-4.1.0.201810181252

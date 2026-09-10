@@ -1,0 +1,61 @@
+*** Creating network
+*** Adding controller
+*** Adding hosts:
+h1 h2 h3 h4 h5 
+*** Adding switches:
+s1 s2 s3 
+*** Adding links:
+(s1, h1) (s1, h2) (s2, h3) (s3, h4) (s3, h5) 
+*** Configuring hosts
+h1 h2 h3 h4 h5 
+*** Starting network
+*** Starting controller
+c0 
+*** Starting 3 switches
+s1 s2 s3 ...
+[+] Assigning IPv6 addresses
+[+] Waiting for controller to learn topology
+[1] Initial connectivity test
+[+] h1 → 2001:db8::4
+PING 2001:db8::4(2001:db8::4) 56 data bytes
+
+--- 2001:db8::4 ping statistics ---
+3 packets transmitted, 0 received, 100% packet loss, time 2031ms
+
+[+] h1 → 2001:db8::5
+PING 2001:db8::5(2001:db8::5) 56 data bytes
+
+--- 2001:db8::5 ping statistics ---
+3 packets transmitted, 0 received, 100% packet loss, time 2073ms
+
+[+] h2 → 2001:db8::4
+PING 2001:db8::4(2001:db8::4) 56 data bytes
+From 2001:db8::2 icmp_seq=1 Destination unreachable: Address unreachable
+From 2001:db8::2 icmp_seq=2 Destination unreachable: Address unreachable
+From 2001:db8::2 icmp_seq=3 Destination unreachable: Address unreachable
+
+--- 2001:db8::4 ping statistics ---
+3 packets transmitted, 0 received, +3 errors, 100% packet loss, time 2062ms
+
+[+] h2 → 2001:db8::5
+PING 2001:db8::5(2001:db8::5) 56 data bytes
+From 2001:db8::2 icmp_seq=1 Destination unreachable: Address unreachable
+From 2001:db8::2 icmp_seq=2 Destination unreachable: Address unreachable
+From 2001:db8::2 icmp_seq=3 Destination unreachable: Address unreachable
+
+--- 2001:db8::5 ping statistics ---
+3 packets transmitted, 0 received, +3 errors, 100% packet loss, time 2059ms
+
+*** Checking NDP tables
+########################################################## h1 ##########################################################
+2001:db8::4 dev h1-eth0 lladdr ea:e9:78:fb:fd:04 REACHABLE
+2001:db8::5 dev h1-eth0 lladdr ea:e9:78:fb:fd:05 REACHABLE
+######################################################### end ##########################################################
+
+########################################################## h2 ##########################################################
+2001:db8::5 dev h2-eth0  FAILED
+2001:db8::4 dev h2-eth0  FAILED
+######################################################### end ##########################################################
+
+[+] 2001:db8::4 is not reachable to h2
+❌ hosts got incorrect Neighbor Advertisement response
